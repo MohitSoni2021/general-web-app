@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+
+<style>
+    
+    @import url('https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap');
+    :root {
+        --dark:#fff;
+        --light:#3540d6;
+    }
+    *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+
+    .card-container{
+        background-color: var(--light);
+        width: 150px;
+        height: 150px;
+        text-align: center;
+        color: var(--dark);
+        text-decoration: none;
+        cursor: pointer;
+    }
+    .outer-editor-container{
+        border-left: 2px solid var(--light);
+        border-right: 2px solid var(--light);
+        width: 100%;
+        height: 90vh;
+        background-color: white;
+        margin-top: 2vh;
+    }
+    body{
+        overflow: hidden;
+    }
+    .heading-container input{
+        font-size: xx-large;
+        text-align: center;
+        font-weight: bolder;
+        background-color: var(--dark);
+        color: rgb(78, 78, 78);
+        border: none;
+        border-bottom: 2px solid var(--light);
+        outline: none;
+    }
+    .content-container textarea{
+        height: 67vh;
+        resize: none;
+        color: grey;
+        outline: none;
+        border: none;
+    }
+    .font-size-option-container{
+        border-bottom: 2px solid var(--light);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+    }
+    .font-size-option-container select{
+        background-color: var(--dark);
+        outline: none;
+        border: none;
+        color: var(--light);
+        border-left: 2px solid var(--light);
+        padding-left: 5px;
+        border-right: 2px solid var(--light);
+    }
+    .font-size-option-container label{
+        font-size: small;
+        font-weight: bolder;
+    }
+</style>
+
+
+<body>
+
+    
+    <form method="post" class="container outer-editor-container">
+        <div class="heading-container">
+            <input value="{{existing_data[0][1]}}" type="text" class="w-100" name="note-title" id="" placeholder="Untitled">
+        </div>
+        <div class="option-container mt-2 pb-2">
+            <div class="font-size-option-container pb-2">
+                <!-- <label style="color: white; padding-right:8px;" ">Font-size:</label> -->
+                <select name="" id="font-size-textarea">
+                    <option value="12px">12px</option>
+                    <option value="14px">14px</option>
+                    <option value="16px">16px</option>
+                    <option value="18px" selected>18px</option>
+                    <option value="20px">20px</option>
+                    <option value="22px">22px</option>
+                    <option value="26px">26px</option>
+                    <option value="28px">28px</option>
+                    <option value="32px">32px</option>
+                    <option value="34px">34px</option>
+                    <option value="38px">38px</option>
+                    <option value="40px">40px</option>
+                    <option value="44px">44px</option>
+                    <option value="48px">48px</option>
+                    <option value="70px">70px</option>
+                </select>
+            </div>
+        </div>
+        <div class="content-container" id="new_note_textarea">
+            <textarea class="w-100 mt-2" name="note-content" id="" cols="30" rows="10">{{existing_data[0][2]}}</textarea>
+        </div>
+        <div class="save-btn">
+            <button name="update_id" value="{{existing_data[0][0]}}" class="btn btn-primary w-100" id="save-btn">Save</button>
+        </div>
+    </form>
+
+
+
+    
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+
+<script>
+    let font_size_textarea = document.getElementById("font-size-textarea");
+    let new_note_textarea = document.getElementById("new_note_textarea");
+    font_size_textarea.addEventListener("change", function(){
+        new_note_textarea.style.fontSize = font_size_textarea.value;
+    });
+</script>
+
+</html>
